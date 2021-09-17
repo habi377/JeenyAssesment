@@ -14,6 +14,7 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
+        buildConfigField("String", "API_KEY", API_KEY)
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -62,6 +63,11 @@ dependencies {
     def coroutines_lifecycle_version = "2.3.1"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$coroutines_lifecycle_version"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$coroutines_lifecycle_version"
+
+    // Room
+    def room_version = "2.3.0"
+    implementation "androidx.room:room-runtime:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     // Local Test
     testImplementation 'junit:junit:4.13.2'
