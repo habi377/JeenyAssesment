@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/most_viewed_navigation"
+    app:startDestination="@id/mostViewedArticlesFragment">
+
+    <fragment
+        android:id="@+id/mostViewedArticlesFragment"
+        android:name="com.habib.jeenyassesment.ui.fragments.MostViewedArticlesFragment"
+        android:label="fragment_most_viewed_articles"
+        tools:layout="@layout/fragment_most_viewed_articles" >
+        <action
+            android:id="@+id/action_mostViewedArticlesFragment_to_detailsMostViewedArticleFragment"
+            app:destination="@id/detailsMostViewedArticleFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailsMostViewedArticleFragment"
+        android:name="com.habib.jeenyassesment.ui.fragments.DetailsMostViewedArticleFragment"
+        android:label="fragment_details_most_viewed_article"
+        tools:layout="@layout/fragment_details_most_viewed_article" >
+
+        <argument
+            android:name="data"
+            android:defaultValue="@null"
+            app:argType="com.habib.jeenyassesment.data.local.models.MostViewedArticleDomainModel"
+            app:nullable="true" />
+
+    </fragment>
+
+
+</navigation>

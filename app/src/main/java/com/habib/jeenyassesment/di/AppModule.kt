@@ -2,8 +2,10 @@ package com.habib.jeenyassesment.di
 
 import android.content.Context
 import androidx.room.Room
+import com.habib.jeenyassesment.data.local.MostViewedArticleDao
 import com.habib.jeenyassesment.data.local.MostViewedArticlesDatabase
 import com.habib.jeenyassesment.data.remote.NYtimesAPI
+import com.habib.jeenyassesment.repository.Repository
 import com.habib.jeenyassesment.utils.Constants.BASE_URL
 import com.habib.jeenyassesment.utils.Constants.DATABASE_NAME
 import dagger.Module
@@ -25,6 +27,12 @@ object AppModule {
         @ApplicationContext context: Context
     ) = Room.databaseBuilder(context, MostViewedArticlesDatabase::class.java, DATABASE_NAME).build()
 
+    @Singleton
+    @Provides
+    fun provideRepository(
+        dao: MostViewedArticleDao,
+        api: NYtimesAPI
+    ) = Repository(dao,api)
 
     @Singleton
     @Provides
