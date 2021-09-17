@@ -1,7 +1,8 @@
-package com.habib.jeenyassesment
+package com.habib.jeenyassesment.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.habib.jeenyassesment.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
