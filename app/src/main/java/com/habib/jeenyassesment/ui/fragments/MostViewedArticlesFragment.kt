@@ -94,9 +94,6 @@ class MostViewedArticlesFragment : Fragment() {
         viewModel.eventNetworkError.observe(viewLifecycleOwner, { isNetworkError ->
             if (isNetworkError) onNetworkError()
         })
-        viewModel.eventNetworkErrorMsg.observe(viewLifecycleOwner, { networkErrorMsg ->
-            Toast.makeText(requireContext(), ""+networkErrorMsg , Toast.LENGTH_LONG).show()
-        })
     }
 
     private fun onNetworkError() {
