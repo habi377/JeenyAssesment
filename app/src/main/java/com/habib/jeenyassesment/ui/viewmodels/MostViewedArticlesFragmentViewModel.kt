@@ -62,7 +62,7 @@ class MostViewedArticlesFragmentViewModel @Inject constructor(
             } catch (networkError: IOException) {
                 // Show a Toast error message and hide the progress bar.
                 if(mostViewed.value.isNullOrEmpty()){
-                    _eventNetworkErrorMsg.value = networkError.message
+                    _eventNetworkErrorMsg.value = networkError.message.toString()
                     _eventNetworkError.value = true
                 }
             }

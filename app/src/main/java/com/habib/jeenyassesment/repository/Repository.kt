@@ -20,10 +20,11 @@ class Repository @Inject constructor(
         it.asDomainModel()
     }
     suspend fun refreshMostViewed(period:Int){
-//        withContext(Dispatchers.IO) {
+        withContext(Dispatchers.IO) {
             Log.d("","refresh is called")
             val response = nYtimesAPI.getMostViewed(period)
+            Log.d("adsadsad",response.toString())
             mostViewedArticleDao.insertAll(response.asDatabaseModel())
-//        }
+        }
     }
 }

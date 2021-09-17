@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.habib.jeenyassesment.R
 import com.habib.jeenyassesment.adapters.MostViewedArticlesAdapter
@@ -42,6 +43,7 @@ class MostViewedArticlesFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+        binding = FragmentMostViewedArticlesBinding.inflate(inflater, container, false)
 
         // Set the lifecycleOwner so DataBinding can observe LiveData
         binding.lifecycleOwner = viewLifecycleOwner
@@ -55,12 +57,15 @@ class MostViewedArticlesFragment : Fragment() {
             adapter = viewModelAdapter
         }
 
-        binding = FragmentMostViewedArticlesBinding.inflate(inflater, container, false)
         return binding.root
     }
 
     private fun addItemClicked(article: MostViewedArticleDomainModel) {
-
+        val action =
+            MostViewedArticlesFragmentDirections.actionMostViewedArticlesFragmentToDetailsMostViewedArticleFragment(
+                article
+            )
+        findNavController().navigate(action)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -101,5 +106,4 @@ class MostViewedArticlesFragment : Fragment() {
             }
         }
     }
-
 }
