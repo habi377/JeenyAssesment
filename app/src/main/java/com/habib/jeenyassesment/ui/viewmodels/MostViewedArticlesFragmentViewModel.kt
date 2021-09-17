@@ -18,8 +18,17 @@ class MostViewedArticlesFragmentViewModel @Inject constructor(
     // update the UI from the db
     val mostViewed = repository.dataItem
     /**
-     * Event triggered for network error. This is private to avoid exposing a
-     * way to set this value to observers.
+     * Event triggered for network error message.
+     */
+    private var _eventNetworkErrorMsg = MutableLiveData<String>("")
+    /**
+     * Event triggered for network error message.
+     */
+    val eventNetworkErrorMsg: LiveData<String>
+        get() = _eventNetworkErrorMsg
+
+    /**
+     * Event triggered for network error.
      */
     private var _eventNetworkError = MutableLiveData<Boolean>(false)
     /**
@@ -28,14 +37,13 @@ class MostViewedArticlesFragmentViewModel @Inject constructor(
      */
     val eventNetworkError: LiveData<Boolean>
         get() = _eventNetworkError
+
     /**
-     * Flag to display the error message. This is private to avoid exposing a
-     * way to set this value to observers.
+     * Flag to display the error message.
      */
     private var _isNetworkErrorShown = MutableLiveData<Boolean>(false)
     /**
-     * Flag to display the error message. Views should use this to get access
-     * to the data.
+     * Flag to display the error message.
      */
     val isNetworkErrorShown: LiveData<Boolean>
         get() = _isNetworkErrorShown
@@ -53,8 +61,10 @@ class MostViewedArticlesFragmentViewModel @Inject constructor(
 
             } catch (networkError: IOException) {
                 // Show a Toast error message and hide the progress bar.
-                if(mostViewed.value.isNullOrEmpty())
+                if(mostViewed.value.isNullOrEmpty()){
+                    _eventNetworkErrorMsg.value = networkError.message
                     _eventNetworkError.value = true
+                }
             }
         }
     }
