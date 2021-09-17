@@ -1,6 +1,129 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="article"
+            type="com.habib.jeenyassesment.data.local.models.MostViewedArticleDomainModel" />
+
+        <!--<variable
+            name="media"
+            type="com.habib.testingjenny.data.remote.models.mostviewed.Media" />-->
+
+        <variable
+            name="mostViewedCallback"
+            type="com.habib.jeenyassesment.utils.ArticleClick" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:id="@+id/mvc_most_viewd_item"
+        android:layout_marginTop="15dp"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="10dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                app:layout_constraintEnd_toStartOf="@id/tv_title_most_viewed_item"
+                android:id="@+id/iv_image_most_viewed_item"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                app:imageUrl="@{article.imageUrl}"
+                app:imageWidth="@{article.imageWidth}"
+                app:imageHeight="@{article.imageHeight}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:onClick="@{() -> mostViewedCallback.onClick(article)}"
+                android:id="@+id/iv_nav_most_viewed_item"
+                android:layout_width="30dp"
+                android:layout_height="60dp"
+                android:src="@drawable/ic_baseline_navigate_next"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:id="@+id/tv_title_most_viewed_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="@{article.articleTitle}"
+                android:textColor="@android:color/black"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/iv_nav_most_viewed_item"
+                app:layout_constraintStart_toEndOf="@+id/iv_image_most_viewed_item"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Norm Macdonald, ‘Saturday Night Live’ Comedian, Dies at 61" />
+
+            <TextView
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:id="@+id/tv_by_most_viewed_item"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:maxLines="1"
+                android:text="@{article.byLine}"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/iv_nav_most_viewed_item"
+                app:layout_constraintStart_toEndOf="@+id/iv_image_most_viewed_item"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title_most_viewed_item"
+                tools:text="Norm Macdonald, ‘Saturday Night Live’ Comedian, Dies at 61" />
+
+            <TextView
+                android:id="@+id/tv_date_most_viewed_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:drawablePadding="5dp"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:text="@{article.publishedDate}"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                app:drawableStartCompat="@drawable/ic_baseline_today"
+                app:layout_constraintEnd_toStartOf="@+id/iv_nav_most_viewed_item"
+                app:layout_constraintTop_toBottomOf="@+id/tv_by_most_viewed_item"
+                tools:text="10/12/2021" />
+
+            <TextView
+                android:paddingEnd="10dp"
+                android:paddingStart="10dp"
+                android:id="@+id/tv_style_most_viewed_item"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLength="14"
+                android:maxLines="1"
+                android:text="@{article.section}"
+                android:textColor="@android:color/black"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@+id/tv_date_most_viewed_item"
+                app:layout_constraintStart_toEndOf="@id/iv_image_most_viewed_item"
+                app:layout_constraintTop_toTopOf="@+id/tv_date_most_viewed_item"
+                tools:text="THOMPSON" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</layout>

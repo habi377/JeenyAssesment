@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Habib ur rehman/AndroidStudioProjects/JeenyAssesment/app/src/main/res/drawable/ic_baseline_navigate_next.xml" value="0.17592592592592593" />
         <entry key="..\:/Users/Habib ur rehman/AndroidStudioProjects/JeenyAssesment/app/src/main/res/layout/activity_main.xml" value="0.20416666666666666" />
         <entry key="..\:/Users/Habib ur rehman/AndroidStudioProjects/JeenyAssesment/app/src/main/res/layout/fragment_most_viewed_articles.xml" value="0.1024390243902439" />
+        <entry key="..\:/Users/Habib ur rehman/AndroidStudioProjects/JeenyAssesment/app/src/main/res/layout/most_viewed_item.xml" value="0.10552763819095477" />
       </map>
     </option>
   </component>
